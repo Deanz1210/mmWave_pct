@@ -20,12 +20,12 @@ from mmWave import pct
 
 
 #pi 3 or pi 4
-#port = serial.Serial("/dev/ttyS0",baudrate = 921600, timeout = 0.5)
+port = serial.Serial("/dev/ttyS0",baudrate = 921600, timeout = 0.5)
 #for Jetson nano UART port
 #port = serial.Serial("/dev/ttyTHS1",baudrate = 921600, timeout = 0.5)
 #port = serial.Serial("/dev/tty.usbmodemGY0052534",baudrate = 921600 , timeout = 0.5)
 #port = serial.Serial("/dev/ttyACM1",baudrate = 921600 , timeout = 0.5)
-port = serial.Serial("/dev/tty.SLAB_USBtoUART5",baudrate = 921600, timeout = 0.5)  
+#port = serial.Serial("/dev/tty.SLAB_USBtoUART5",baudrate = 921600, timeout = 0.5)  
 
 
 #
