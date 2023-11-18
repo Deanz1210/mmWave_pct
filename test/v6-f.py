@@ -35,6 +35,7 @@ import json
 import os
 import time
 #pi 3 or pi 4
+#sudo chmod +777 /dev/ttyS0
 port = serial.Serial("/dev/ttyS0",baudrate = 921600, timeout = 0.5)
 #
 # dataType : false is list output more fast  
@@ -75,7 +76,7 @@ fn = 0
 prev_fn = 0
 
 # 设置收集多少帧数据后停止
-collect_frames = 10 #改這裡
+collect_frames = 100 #改這裡
 collected_frames = 0
 
 
