@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket 數據串流</title>
+</head>
+
+<body>
+    <h1>hello world</h1>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script>
+        const socket = io();
+
+        socket.on('connected', () => {
+            console.log('連接成功');
+        });
+
+        socket.on('data', (data) => {
+            console.log(data);
+            // 更新 HTML 元素，顯示 JSON 資料
+            const dataContainer = document.getElementById('data-container');
+            dataContainer.innerHTML = '<h2>接收到的資料：</h2>';
+
+            // 遍歷 JSON 資料
+            for (const filename in data) {
+                const content = data[filename];
+                dataContainer.innerHTML += `<p><strong>${filename}:</strong> ${JSON.stringify(content)}</p>`;
+            }
+        });
+    </script>
+</body>
+
+</html>
