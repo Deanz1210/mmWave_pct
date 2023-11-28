@@ -87,15 +87,24 @@ class RadarDataCollector:
             if self.stop_condition.should_stop(self):
                 self.data_file.close()
         self.port.flushInput()
+
+    # 假設 data 是一個列表，其中每個元素都是一個元組 (sx,sy,sz,ran,elv,azi,dop,snr,fn)
+    # 我們只需要前三個元素 (sx,sy,sz)，所以我們可以使用列表推導式來達成這個目標
+    @staticmethod
+    def filter_data(data):
+        return [(sx, sy, sz) for (sx, sy, sz, *_) in data]
        
     # 保存單幀數據
     def _save_frame(self, frame):
         if len(frame) == 0:
             return
+        filtered_frame = RadarDataCollector.filter_data(frame) #過濾設定
         if self.data_file.current_file is None:
-            self.data_file.open(frame)
+            #self.data_file.open(frame)     #無過濾
+            self.data_file.open(filtered_frame)
         else:
-            self.data_file.write(frame)
+            #self.data_file.write(frame)    #無過濾
+            self.data_file.write(filtered_frame)
 
 # 創建一個雷達數據收集器實例並開始收集數據
 collector = RadarDataCollector("/dev/ttyS0", 45, 2.41, "/home/led/mmwave-project/mmwave/mmWave_pct/test/out", TimeStopCondition(10))

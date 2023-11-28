@@ -3,6 +3,12 @@
 JB_UART_PORT = '/dev/tty.SLAB_USBtoUART5'
 JB_TILT_DEGREE = 45 # using: radar = pc3OVH.Pc3OVH(port, degree= JB_TILT_DEGREE)
 JB_RADAR_INSTALL_HEIGHT = 2.41 # meter
+import os
+# 設定當前工作目錄
+os.chdir('/home/led/mmwave-project/mmwave/mmWave_pct')
+
+# 確認當前工作目錄
+print(os.getcwd())
 # for verifying (y1, z1) => (y, z); expected (1, 0) => (0.50, 0.86)
 ###################################################################################
 
@@ -25,7 +31,7 @@ JB_RADAR_INSTALL_HEIGHT = 2.41 # meter
 #
 #=============================================
 
-from pyqtgraph.Qt import QtCore, QtGui
+from PyQt5 import QtCore, QtGui
 import pyqtgraph.opengl as gl
 import pyqtgraph as pg
 import numpy as np
